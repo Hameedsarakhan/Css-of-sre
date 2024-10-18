@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./../../components/Layout/Layout";
-import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
+
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -98,7 +98,7 @@ const CreateCategory = () => {
                           onClick={() => {setVisible(true);
                             setUpdatedName(c.name);
                             setSelected(c);}}> Edit </button>
-                        <button className="btn btn-danger ms-2" onClick={() => {handleDelete(c._id);}}>
+                        <button className="btn btn-danger mt-2 ms-2" onClick={() => {handleDelete(c._id);}}>
                           Delete
                         </button>
                       </td>

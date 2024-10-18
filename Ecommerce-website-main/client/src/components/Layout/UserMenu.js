@@ -1,25 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 const UserMenu = () => {
   return (
-    <div>
-      <div className="text-center dashboard-menu">
-        <div className="list-group">
-          <h4>Dashboard</h4>
+    <div className="user-menu-container">
+      <form className="user-menu-form">
+        <div className="form-group">
           <NavLink
             to="/dashboard/user/profile"
-            className="list-group-item list-group-item-action"
+            className="form-control"
+            activeClassName="active"
           >
             Profile
           </NavLink>
+        </div>
+        <div className="form-group">
           <NavLink
             to="/dashboard/user/orders"
-            className="list-group-item list-group-item-action"
+            className="form-control"
+            activeClassName="active"
           >
             Orders
           </NavLink>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

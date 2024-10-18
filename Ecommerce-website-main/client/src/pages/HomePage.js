@@ -173,131 +173,98 @@ const HomePage = () => {
 
   return (
     <Layout title={"ALl Products - Best offers "}>
-      <div className="mainflex">
-        <div className="flex1">
-          <h1 className="mainh">
-            Indulge in
-            <span className="red"> Pasta on the Plate!</span>
+
+
+<div className="imgcentre">
+        <img className=" img3" src="/images/mainpasta2.jpg" />
+      </div>
+
+
+
+      <div className="row mt-3 home-page">
+        <div className="col-md-12">
+          <h1 style={{ color: "white" }} className="text-center">
+            All Products
           </h1>
-          <p className="mainp">
-            Embark on a culinary journey like no other with our premier
-            ecommerce pasta shop. Offering an enticing array of handcrafted
-            pasta delicacies, we invite you to savor the authentic flavors of
-            Italy from the comfort of your home. From traditional classics to
-            innovative creations, each artisanal pasta is meticulously crafted
-            using only the finest ingredients, promising a gastronomic
-            experience that tantalizes the taste buds.{" "}
-          </p>
-          <button className="mainbtn">
-            <Link to="/categories" className="btnlink">
-              Order Now
-            </Link>
-          </button>
-        </div>
-        <div className="flex2"></div>
-        <img className="img1" src="/images/img1.png" />
-      </div>
+          <div className="d-flex flex-wrap testproducts">
+            {products?.map((p) => (
+              <div className="card m-2" key={p._id}>
+                <img
+                  src={`/api/v1/product/product-photo/${p._id}`}
+                  className="card-img-top"
+                  alt={p.name}
+                />
+                <div className="card-body">
+                  <div className="card-name-price">
+                    <h5 className="card-title">{p.name}</h5>
+                    <h5 className="card-title card-price">
+                      {p.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                    </h5>
+                    
 
-      <div className="menudivs">
-        <h1>Our Menu</h1>
-      </div>
-      <div className="menudivs">
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/pasta.jpg" />
-          <br />
-          <br />
-          <h4 className="mt-10">Exquisite Pasta Creations</h4>
-          <p>
-            Indulge in the timeless flavors of Italy with our handcrafted pasta
-            delicacies, meticulously prepared using the finest ingredients.
-          </p>
-          <Link to="/category/pasta" className="rdmore2">
-            Explore More
-          </Link>
-        </div>
-
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/sandwiches.jpg" />
-          <br />
-          <br />
-          <h4>Sandwiches</h4>
-          <p>
-            Experience the flavour of our perfect sandwiches, delivering a burst of flavor in every bite.
-          </p>
-          <br />
-          <Link to="/category/sandwiches" className="rdmore2">
-            Explore More
-          </Link>
-        </div>
-      </div>
-
-      <div className="menudivs">
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/chowmein.jfif" />
-          <br />
-          <br />
-          <h4>Irresistible Chowmein</h4>
-          <p>
-            Delight your senses with our savory chowmein, expertly crafted with
-            a medley of aromatic spices and fresh ingredients.
-          </p>
-          <Link to="/category/chowmein" className="rdmore2">
-            Explore More
-          </Link>
-        </div>
-
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/soups.jpg" />
-          <br />
-          <br />
-          <h4>Soups</h4>
-          <p>
-            Explore our diverse selection of soups crafted that span a world of culinary traditions and ingredients.
-          </p>
-          <Link to="/category/soups" className="rdmore2">
-            Explore More
-          </Link>
+                  </div>
+                  <p className="card-text-light">
+                    {p.description.substring(0, 40)}...
+                  </p>
+                  <div className="card-name-price">
+                    <button
+                      className="btn btn-danger ms-1 moredetails"
+                      name="More Details"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    <button
+                      className="btn btn-success ms-1 addtocart"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item Added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="m-2 p-2">
+            {products && products.length < total && (
+              <button
+                className="btn loadmore"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage(page + 1);
+                }}
+              >
+                {loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="menudivs">
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/desserts.jfif" />
-          <br />
-          <br />
-          <h4>Desserts</h4>
-          <p>
-            Explore our delectable assortment of desserts crafted with passion
-            and precision to satisfy your sweet tooth. 
-          </p>
-          <Link to="/category/desserts" className="rdmore2">
-            Explore More
-          </Link>
-        </div>
 
-        <div className="col-md-3 menudiv">
-          <img className="icons" src="/images/beverages.jfif" />
-          <br />
-          <br />
-          <h4>Refreshing Beverages</h4>
-          <p>
-            Quench your thirst with our refreshing selection of beverages,
-            ranging from energizing juices to soothing teas.
-          </p>
-          <Link to="/category/drinks" className="rdmore2">
-            Explore More
-          </Link>
-        </div>
-      </div>
 
-      <div className="menudivs container-fluid">
-        <button className="explorebtn container-fluid">
-          <Link to="/categories" className="btnlink">
-            Explore more
-          </Link>
-        </button>
-        <br /> <br />
-      </div>
+
+
+
+
+
 
       <div className="mainflex">
         <div className="flex1">
@@ -308,10 +275,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="imgcentre">
-        <img className=" img3" src="/images/free.jpeg" />
-      </div>
-
+     
       <div className="flex_main2h2">
         <br />
         <br />
@@ -382,80 +346,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-9 container-fluid ">
-          <h1 style={{ color: "white" }} className="text-center">
-            All Products
-          </h1>
-          <div className="d-flex flex-wrap test">
-            {products?.map((p) => (
-              <div className="card m-2" key={p._id}>
-                <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
-                  className="card-img-top"
-                  alt={p.name}
-                />
-                <div className="card-body">
-                  <div className="card-name-price">
-                    <h5 className="card-title">{p.name}</h5>
-                    <h5 className="card-title card-price">
-                      {p.price.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
-                    </h5>
-                  </div>
-                  <p className="card-text-light">
-                    {p.description.substring(0, 60)}...
-                  </p>
-                  <div className="card-name-price">
-                    <button
-                      className="btn btn-danger ms-1 moredetails"
-                      name="More Details"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button>
-                    <button
-                      className="btn btn-dark ms-1 addtocart"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item Added to cart");
-                      }}
-                    >
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="m-2 p-2">
-            {products && products.length < total && (
-              <button
-                className="btn loadmore"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? (
-                  "Loading ..."
-                ) : (
-                  <>
-                    {" "}
-                    Loadmore <AiOutlineReload />
-                  </>
-                )}
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+     
     </Layout>
   );
 };

@@ -108,7 +108,9 @@ const Profile = () => {
                 <button type="submit"className="btn btn-danger updatebtn">
                   UPDATE
                 </button>
+                
               </form>
+              <br/> <br/>
             </div>
           </div>
         </div>

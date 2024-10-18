@@ -6,7 +6,7 @@
 .product-details-info {
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
+
   justify-content: center;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .similar-products .card-text {
-  color: rgb(255, 255, 255);
+  color: rgb(1, 1, 1);
 }
 
 .similar-products .card img:hover {

@@ -1,0 +1,34 @@
+
+  
+  .form-title {
+    color: #eff1f4;
+    margin-bottom: 20px;
+  }
+  
+  .admin-info {
+    margin-top: 20px; 
+  }
+  
+  .admin-info h4 {
+    color: white; 
+  }
+  
+  .form-options {
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px; 
+  }
+  
+  .form-option {
+    padding: 10px; 
+    border: 1px solid white;
+    border-radius: 5px; 
+    color: white; 
+    text-align: center; 
+    transition: background-color 0.3s; 
+    cursor: pointer; 
+  }
+  
+  .form-option:hover {
+    background-color: rgb(23, 123, 230); }

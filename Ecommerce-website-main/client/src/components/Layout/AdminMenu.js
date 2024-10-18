@@ -1,39 +1,40 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useAuth } from "../../context/auth";
+import { useNavigate } from "react-router-dom";
+import './AdminMenu.css'; // Make sure to create this CSS file
+import { Layout } from "antd";
 
 const AdminMenu = () => {
+  const [auth] = useAuth(); // Get authenticated user info
+  const navigate = useNavigate(); // Hook to programmatically navigate
+
   return (
-    <>
-      <div className="text-center">
-        <div className="list-group dashboard-menu">
-          <h4>Admin Panel</h4>
-          <NavLink
-            to="/dashboard/admin/create-category"
-            className="list-group-item list-group-item-action"
-          >
-            Create Category
-          </NavLink>
-          <NavLink
-            to="/dashboard/admin/create-product"
-            className="list-group-item list-group-item-action"
-          >
-            Create Product
-          </NavLink>
-          <NavLink
-            to="/dashboard/admin/products"
-            className="list-group-item list-group-item-action"
-          >
-            Products
-          </NavLink>
-          <NavLink
-            to="/dashboard/admin/orders"
-            className="list-group-item list-group-item-action"
-          >
-            Orders
-          </NavLink>
+    <Layout>
+    <div className="container-fluid m-3 p-3 mt-5">
+      <div className="row justify-content-center mt-5">
+        <div className="carddb w-75 p-3 mb-4">
+          <h1 className="text-center form-title">Admin Panel</h1>
+          <div className="admin-info text-center">
+          <p>Admin Name: {auth?.user?.name} | Admin Email: {auth?.user?.email} | Admin Contact: {auth?.user?.phone}</p>
+          </div>
+          <div className="form-options">
+            <div className="form-option" onClick={() => navigate("/dashboard/admin/create-category")}>
+              Create Category
+            </div>
+            <div className="form-option" onClick={() => navigate("/dashboard/admin/create-product")}>
+              Create Product
+            </div>
+            <div className="form-option" onClick={() => navigate("/dashboard/admin/products")}>
+              Products
+            </div>
+            <div className="form-option" onClick={() => navigate("/dashboard/admin/orders")}>
+              Orders
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
+    </Layout>
   );
 };
 

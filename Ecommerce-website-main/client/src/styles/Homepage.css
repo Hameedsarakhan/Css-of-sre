@@ -1,3 +1,35 @@
+
+.imgcentre{
+  display: flex;
+  align-items: center;
+}
+.img3{
+  width:100%;
+  background-image:cover;
+  max-height:600px;
+}
+.home-page{
+  margin: auto;
+ }
+ 
+ .testproducts{
+  margin: auto;
+ }
+ .card-text{
+  font-size:12px;
+}
+
+ .card-body{
+  background-color: white;
+ }
+ 
+.card-img-top{
+  height:200px;
+ }
+ 
+ 
+ 
+ 
  /* FLEXES */
  .submitbtn{
   width:100px;
@@ -60,7 +92,7 @@ input, select, textarea {
 }
 
 .flex_main2h2 {
-  background-color:#373131;
+  background-color:#080808;
   color:white;
   height:auto;
   display: flex;
@@ -74,14 +106,8 @@ input, select, textarea {
   width:90%;
   height:60%;
 }
-.img3{
-  width:80%;
-}
-.imgcentre{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
 .menudivs{
   display:flex;
   align-items: center;
@@ -220,27 +246,6 @@ flex-direction: column;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*old */
 .home-page h1 {
   color: gray;
@@ -252,7 +257,7 @@ flex-direction: column;
   flex-wrap: wrap;
 }
 .home-page .card {
-  background-color: rgba(128, 128, 128, 0.097);
+  background-color: rgba(255, 255, 255, 0.097);
   width: 18rem;
 }
 .home-page .card-name-price {
@@ -271,6 +276,7 @@ flex-direction: column;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   font-size: 14px;
+
   font-weight: bold;
 }
 
@@ -282,9 +288,7 @@ flex-direction: column;
   transform: scale(0.9);
 }
 
-.home-page .card-img-top {
-  height: 300px !important;
-}
+
 /* ==================
 filters
 ============== */
@@ -319,3 +323,5 @@ filters
   font-weight: bold;
   font-size: 20px !important;
 }
+
+

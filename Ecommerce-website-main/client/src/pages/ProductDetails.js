@@ -80,7 +80,7 @@ const ProductDetails = () => {
       <hr />
       <div className="row container similar-products">
         <br />
-        <h1 className="text-center">Similar Products ➡️</h1>
+        <h1 className="text-center container">Similar Products</h1>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}

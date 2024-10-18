@@ -1,0 +1,39 @@
+.create-product-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .create-product-form {
+
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form-select, .form-control {
+    margin-bottom: 20px;
+  }
+  
+  .btn-success2 {
+    color:white;
+    background-color:rgb(185, 9, 9);
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  

@@ -1,25 +1,35 @@
 import React from "react";
-import AdminMenu from "../../components/Layout/AdminMenu";
-import Layout from "./../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
+import { useNavigate } from "react-router-dom";
+import Layout from "../../components/Layout/Layout"; // Corrected import path
+import './AdminDashboard.css'; // Ensure this file exists
 
 const AdminDashboard = () => {
-  const [auth] = useAuth();
+  const [auth] = useAuth(); // Get authenticated user info
+  const navigate = useNavigate(); // Hook to programmatically navigate
 
   return (
     <Layout>
       <div className="container-fluid m-3 p-3 mt-5">
         <div className="row justify-content-center mt-5">
-          <div className="card w-75 p-3 mb-4">
-            <AdminMenu />
-          </div>
-          <div className="col-md-9 d-flex justify-content-center">
-            <div className="card text-black w-75 p-3">
-              <h3 className="text-center">Admin Details</h3>
-              <hr />
-              <h4>Admin Name: {auth?.user?.name}</h4>
-              <h4>Admin Email: {auth?.user?.email}</h4>
-              <h4>Admin Contact: {auth?.user?.phone}</h4>
+          <div className="carddb w-75 p-3 mb-4">
+            <h1 className="text-center form-title">Admin Panel</h1>
+            <div className="admin-info text-center">
+              <p>Admin Name: {auth?.user?.name} | Admin Email: {auth?.user?.email} | Admin Contact: {auth?.user?.phone}</p>
+            </div>
+            <div className="form-options">
+              <div className="form-option" onClick={() => navigate("/dashboard/admin/create-category")}>
+                Create Category
+              </div>
+              <div className="form-option" onClick={() => navigate("/dashboard/admin/create-product")}>
+                Create Product
+              </div>
+              <div className="form-option" onClick={() => navigate("/dashboard/admin/products")}>
+                Products
+              </div>
+              <div className="form-option" onClick={() => navigate("/dashboard/admin/orders")}>
+                Orders
+              </div>
             </div>
           </div>
         </div>

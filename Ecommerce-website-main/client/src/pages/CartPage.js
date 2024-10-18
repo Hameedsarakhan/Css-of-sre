@@ -4,7 +4,6 @@ import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
-import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "../styles/CartStyles.css";
@@ -17,180 +16,127 @@ const CartPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //total price
   const totalPrice = () => {
-    try {
-      let total = 0;
-      cart?.map((item) => {
-        total = total + item.price;
-      });
-      return total.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //detele item
-  const removeCartItem = (pid) => {
-    try {
-      let myCart = [...cart];
-      let index = myCart.findIndex((item) => item._id === pid);
-      myCart.splice(index, 1);
-      setCart(myCart);
-      localStorage.setItem("cart", JSON.stringify(myCart));
-    } catch (error) {
-      console.log(error);
-    }
+    let total = 0;
+    cart?.forEach(item => {
+      total += item.price;
+    });
+    return total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
   };
 
-  //get payment gateway token
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
-      setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(error);
-    }
+  const removeCartItem = (pid) => {
+    const updatedCart = cart.filter(item => item._id !== pid);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+
+  const getToken = async () => {
+    const { data } = await axios.get("/api/v1/product/braintree/token");
+    setClientToken(data?.clientToken);
+  };
+
   useEffect(() => {
     getToken();
   }, [auth?.token]);
 
-  //handle payments
   const handlePayment = async () => {
-    try {
-      setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
-        nonce,
-        cart,
-      });
-      setLoading(false);
-      localStorage.removeItem("cart");
-      setCart([]);
-      navigate("/dashboard/user/orders");
-      toast.success("Payment Completed Successfully ");
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+    setLoading(true);
+    const { nonce } = await instance.requestPaymentMethod();
+    const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      nonce,
+      cart,
+    });
+    setLoading(false);
+    localStorage.removeItem("cart");
+    setCart([]);
+    navigate("/dashboard/user/orders");
+    toast.success("Payment Completed Successfully");
   };
+
   return (
     <Layout>
-      {/* <div className="row cart-page2">
-          <div className="col-md-12 mt-5">
-            <h1 className="text-center bg-light p-2 mb-1">
-              {!auth?.user
-                ? "Welcome to Pasta on the Plate!"
-                : `Hello  ${auth?.token && auth?.user?.name}`}
-              <p className="text-center cardno">
-                {cart?.length
-                  ? `You Have ${cart.length} items in your cart ${
-                      auth?.token ? "" : "please login to checkout !"
-                    }`
-                  : " Your Cart Is Empty"}
-              </p>
-            </h1>
-          </div>
-        </div> */}
-      <div className=" cart-page">
-        <div className="container">
-          <div className="row container-fluid">
-            <div className="col-md-7  p-0 m-0">
-              {cart?.map((p) => (
-                <div className="card" key={p._id}>
-                  <div className="col-md-6 d-flex flex-wrap container-fluid">
-                    <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
-                      className="card-img"
-                      alt={p.name}
-                      width="100%"
-                    />
-                  </div>
-                  <div className="col-md-7 container-fluid">
-                    <p>{p.name}</p>
-                    <p>Price : {p.price}</p>
-                  </div>
-                  <button
-                    style={{ marginLeft: "70px", width: "150px" }}
-                    className="btn btn-danger remove"
-                    onClick={() => removeCartItem(p._id)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              ))}
+      <div className="cart-page container">
+        <div className="cart-summary">
+          <h2>Cart Summary</h2>
+          <p>Total: {totalPrice()}</p>
+          {auth?.user?.address ? (
+            <div className="address-card mb-3">
+              <p>Current Address: {auth?.user?.address}</p>
+              <button
+                className="btn btn-danger"
+                onClick={() => navigate("/dashboard/user/profile")}
+              >
+                Update Address
+              </button>
             </div>
-            <div className="col-md-5 cart-summary">
-              <h2>Cart Summary</h2>
-              <p>Total | Checkout | Payment</p>
-              <hr />
-              <h4>Total : {totalPrice()} </h4>
-              {auth?.user?.address ? (
-                <>
-                  <div className="mb-3 addresscard">
-                    <h4>Current Address</h4>
-                    <h5>{auth?.user?.address}</h5>
-                    <button
-                      className="btn btn-danger addressupdate"
-                      onClick={() => navigate("/dashboard/user/profile")}
-                    >
-                      Update Address
-                    </button>
-                  </div>
-                </>
+          ) : (
+            <div className="mb-3 address-card">
+              {auth?.token ? (
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => navigate("/dashboard/user/profile")}
+                >
+                  Update Address
+                </button>
               ) : (
-                <div className="mb-3 addresscard">
-                  {auth?.token ? (
-                    <button
-                      className="btn btn-outline-danger addressupdate"
-                      onClick={() => navigate("/dashboard/user/profile")}
-                    >
-                      Update Address
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-danger"
-                      onClick={() =>
-                        navigate("/login", {
-                          state: "/cart",
-                        })
-                      }
-                    >
-                      Please Login to checkout
-                    </button>
-                  )}
-                </div>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => navigate("/login", { state: "/cart" })}
+                >
+                  Please Login to checkout
+                </button>
               )}
-              <div className="mt-2">
-                {!clientToken || !auth?.token || !cart?.length ? (
-                  ""
-                ) : (
-                  <>
-                    <DropIn
-                      options={{
-                        authorization: clientToken,
-                        paypal: {
-                          flow: "vault",
-                        },
-                      }}
-                      onInstance={(instance) => setInstance(instance)}
-                    />
+            </div>
+          )}
+          <div className="mt-2">
+            {!clientToken || !auth?.token || !cart?.length ? null : (
+              <>
+                <DropIn
+                  options={{
+                    authorization: clientToken,
+                    paypal: {
+                      flow: "vault",
+                    },
+                  }}
+                  onInstance={(instance) => setInstance(instance)}
+                />
+                <br/>
+                <button
+                  className="btn btn-danger"
+                  onClick={handlePayment}
+                  disabled={loading || !instance || !auth?.user?.address}
+                >
+                  {loading ? "Processing ...." : "Make Payment"}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
 
-                    <button
-                      className="btn btn-danger"
-                      onClick={handlePayment}
-                      disabled={loading || !instance || !auth?.user?.address}
-                    >
-                      {loading ? "Processing ...." : "Make Payment"}
-                    </button>
-                  </>
-                )}
+        {/* Product List on the Right */}
+        <div className="product-list">
+          {cart?.map((p) => (
+            <div className="card" key={p._id}>
+              <img
+                src={`/api/v1/product/product-photo/${p._id}`}
+                className="card-img"
+                alt={p.name}
+              />
+              <div className="card-body">
+                <p>{p.name}</p>
+                <p>Price: {p.price} $</p>
+                <button
+                  className="btn btn-danger remove"
+                  onClick={() => removeCartItem(p._id)}
+                >
+                  Remove
+                </button>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </Layout>

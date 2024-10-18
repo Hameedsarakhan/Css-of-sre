@@ -1,0 +1,24 @@
+.card {
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .product-link {
+    text-decoration: none;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .card-text {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+  }
+  
