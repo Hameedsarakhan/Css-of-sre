@@ -1,0 +1,32 @@
+.search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px; 
+    margin-left: 70px;
+  }
+  
+.form-controls {
+    width: 500px; 
+    padding: 8px; 
+    border: 1px solid #ced4da; 
+    border-radius: 7px;
+    font-size: 16px; 
+  }
+  
+  .form-control:focus {
+    outline: none; 
+  }
+  
+  .btn {
+    padding: 8px 15px;
+    font-size: 16px; 
+    color: white; 
+    border: none; 
+    border-radius: 7px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  
+  

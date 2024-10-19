@@ -1,0 +1,26 @@
+h3 {
+    justify-content: center;
+    align-items: center;
+  }
+  
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin-left: 100px;
+  }
+  
+.filter h4 {
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+.filter button {
+    margin-top: 10px;
+  }
+  
+
+  
+  
+  
