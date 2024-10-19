@@ -11,7 +11,7 @@ const Dashboard = () => {
       <div className="container mt-5">
         <div className="row">
         <div className="admin-info text-center">
-          <h1>User Profile</h1>
+          <h1 className="mt-5">User Profile</h1>
               <p>User Name: {auth?.user?.name} | User Email: {auth?.user?.email} | User Contact: {auth?.user?.phone}</p>
            <UserMenu/>
             </div>

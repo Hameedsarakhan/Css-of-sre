@@ -51,7 +51,7 @@ const AdminOrders = () => {
       <div className="container-fluid m-3 p-3 dashboard mt-5">
         <div className="row justify-content-center">
           <div className="col-md-9">
-            <h1 className="text-center text-white">All Orders</h1>
+            <h1 className="mt-5 text-center text-white">All Orders</h1>
             {orders?.map((o, i) => (
               <div className="border shadow mb-4 p-3 " key={o._id}>
                 <h4 className="text-center text-white mb-3 d-md-none">
@@ -92,25 +92,25 @@ const AdminOrders = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className="container">
+                <div className="col-md-7">
                   {o?.products?.map((p) => (
                     <div
-                      className="row mb-2 p-3 card flex-row text-black"
+                      className="row mb-2 p-2 card flex-row text-black"
                       key={p._id}
                     >
-                      <div className="col-md-12  text-black">
+                      <div className="text-black">
                         <img
                           src={`/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
-                          width="300px"
+                          width="350px"
                           height="auto"
                         />
                       </div>
                       <div className="col-md-8 text-black">
-                        <p>{p.name}</p>
-                        <p>{p.description.substring(0, 30)}</p>
-                        <p>Price: {p.price}</p>
+                        <h5>{p.name}</h5>
+                    
+                        <p>Price: {p.price} $</p>
                       </div>
                     </div>
                   ))}

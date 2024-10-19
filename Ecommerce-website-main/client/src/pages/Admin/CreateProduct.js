@@ -63,7 +63,7 @@ const CreateProduct = () => {
     <Layout title={"Dashboard - Create Product"}>
       <div className="create-product-container">
         <div className="create-product-form">
-          <h1>Create Product</h1>
+          <h1 className="mt-5">Create Product</h1>
           <div className="form-content">
             <Select
               bordered={false}

@@ -1,6 +1,7 @@
 
 .imgcentre{
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .img3{
@@ -91,15 +92,7 @@ input, select, textarea {
   border: none;
 }
 
-.flex_main2h2 {
-  background-color:#080808;
-  color:white;
-  height:auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-}
 
 
 .img2{
@@ -108,49 +101,29 @@ input, select, textarea {
 }
 
 
-.menudivs{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width:100%;
-  height:auto;
-  background: #000;
-  color:white;
 
-}
 .rdmore2{
-  color:rgb(26, 201, 114);
+  background-color:rgba(202, 10, 10, 0.811);
+  color:rgb(255, 255, 255);
   text-decoration: none;
+  margin:5px;
+  padding:8px;
+  border-radius: 16px;
 }
 
 .menudiv{
-  margin:20px;
-  padding:10px;
-  border:2px solid rgb(249, 4, 4);
-  border-color: rgb(249, 4, 4);
-  border-radius: 16px;
+  width:250px;
+height:400px;
+margin:10px;
+background-color:white;
+color:black;
+border-radius: 16px;
   
 }
 .icons{
   height:200px;
   width:100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .mainflex{
   display:flex;
@@ -165,6 +138,7 @@ input, select, textarea {
 }
 .mainp{
 width:500px;
+text-align: center;
 word-wrap: break-word;
 }
 .mainh{
@@ -177,7 +151,8 @@ word-wrap: break-word;
 .mainbtn{
   background-color: rgb(249, 4, 4);
   color:white;
-  width:150px;
+  width:170px;
+  margin: auto;
   height:40px;
   border-color:rgb(249, 4, 4);
   border-radius: 20px;
@@ -194,25 +169,14 @@ word-wrap: break-word;
 .btnlink{
   background-color: rgb(249, 4, 4);
   color: white;
+  width:auto;
   text-decoration: none;
 }
 
 
 
 
-.flex1{
-  margin-left:30px;
-  max-width:700px;
-  color:white;
-}
-.flex2{
-  margin-right:20px;
-  max-width:700px;
 
-}
-.img1{
-width:45%;
-}
 .banner-img {
   margin-top: 60px;
 }
@@ -276,7 +240,6 @@ flex-direction: column;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   font-size: 14px;
-
   font-weight: bold;
 }
 

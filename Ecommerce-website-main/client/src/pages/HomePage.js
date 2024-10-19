@@ -177,12 +177,36 @@ const HomePage = () => {
 
 <div className="imgcentre">
         <img className=" img3" src="/images/mainpasta2.jpg" />
+        <h1 className="container mt-5">
+            Indulge in
+            <span className="red"> Pasta on the Plate!</span>
+          </h1>
+          <p className="container text-centre mainp">
+            Embark on a culinary journey like no other with our premier
+            ecommerce pasta shop. Offering an enticing array of handcrafted
+            pasta delicacies, we invite you to savor the authentic flavors of
+            Italy from the comfort of your home. From traditional classics to
+            innovative creations, each artisanal pasta is meticulously crafted
+            using only the finest ingredients, promising a gastronomic
+            experience that tantalizes the taste buds.{" "}
+          </p>
+          <button className="d-flex align-items-center mainbtn">
+            <Link to="/categories" className="container btnlink">
+              Order Now
+            </Link>
+          </button>
+     
+     
+     
       </div>
+
+  
+        
 
 
 
       <div className="row mt-3 home-page">
-        <div className="col-md-12">
+        <div className="col-md-12 mt-5">
           <h1 style={{ color: "white" }} className="text-center">
             All Products
           </h1>
@@ -196,8 +220,8 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <div className="card-name-price">
-                    <h5 className="card-title">{p.name}</h5>
-                    <h5 className="card-title card-price">
+                    <h5 className="text-start card-title">{p.name}</h5>
+                    <h5 className="text-start card-title card-price">
                       {p.price.toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
@@ -281,7 +305,7 @@ const HomePage = () => {
         <br />
         <br />
         <h1>Want help ? Wanna Leave a review ?</h1>
-        <p>Tell us more about your queries or give us feedback..</p>
+        <p className="text-center">Tell us more about your queries or give us feedback..</p>
       </div>
 
       <div className="flexescontainer">

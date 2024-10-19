@@ -92,9 +92,9 @@ const ProductDetails = () => {
                 className="card-img-top"
                 alt={p.name}
               />
-              <div className="card-body">
+              <div className="card-body text-start">
                 <div className="card-name-price">
-                  <h5 className="card-title">{p.name}</h5>
+                  <h5 className="text-start card-title">{p.name}</h5>
                   <h5 className="card-title card-price">
                     {p.price.toLocaleString("en-US", {
                       style: "currency",
@@ -102,7 +102,7 @@ const ProductDetails = () => {
                     })}
                   </h5>
                 </div>
-                <p className="card-text ">
+                <p className="text-start card-text ">
                   {p.description.substring(0, 60)}...
                 </p>
                 <div className="card-name-price">

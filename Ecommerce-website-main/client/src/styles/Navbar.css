@@ -7,7 +7,6 @@ li{
   }
   .navbar {
     padding: 0.5rem 1rem;
-    background-color: black; 
     border-bottom: none !important; 
     box-shadow: none !important; 
   }
@@ -48,9 +47,41 @@ li{
   
   .navbar-toggler-icon {
     filter: invert(1); 
+    color:white;
+  }
+  navbar-toggler{
+    background-color: #333;
+    color:white;
   }
   
   .nav-link .ant-badge, 
   .nav-link .ant-badge-count {
     color: white !important; 
   }
+
+
+
+
+/* General navbar collapse background color */
+.navbar-collapse {
+  /* Set background to black when expanded */
+  padding: 1rem; /* Add padding */
+}
+
+/* Styling for small screens */
+@media (max-width: 768px) {
+  .navbar-collapse {
+    /* Set background to black when expanded */
+    padding: 1rem; /* Add padding */
+    background-color: #020202;
+  }
+  .navbar-brand span {
+    display: none; /* Hide the span on small screens */
+  }
+
+  .navbar-logo {
+    width: 50px; /* Optionally reduce logo size on small screens */
+    height: auto;
+  }
+}
+

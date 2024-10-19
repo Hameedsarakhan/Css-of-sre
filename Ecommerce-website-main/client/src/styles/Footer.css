@@ -1,0 +1,16 @@
+/* Ensure the footer is always at the bottom */
+html, body {
+    height: 100%; /* Full height for body */
+    margin: 0; /* Remove default margin */
+  }
+  
+  body {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertical layout */
+  }
+  
+  /* Main content area should take remaining space */
+  .main-content {
+    flex: 1; /* Grow to fill available space */
+  }
+  

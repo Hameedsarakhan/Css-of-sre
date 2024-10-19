@@ -73,7 +73,7 @@ const CreateCategory = () => {
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
-            <h1 className="text-white">Manage Category</h1>
+            <h1 className="text-white mt-5">Manage Category</h1>
           </div>
           <div className="col-md-12 d-flex justify-content-center createcategory">
             <div className="p-3 w-50">

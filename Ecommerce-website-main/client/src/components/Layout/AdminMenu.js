@@ -13,7 +13,7 @@ const AdminMenu = () => {
     <div className="container-fluid m-3 p-3 mt-5">
       <div className="row justify-content-center mt-5">
         <div className="carddb w-75 p-3 mb-4">
-          <h1 className="text-center form-title">Admin Panel</h1>
+          <h1 className="mt-5 text-center form-title">Admin Panel</h1>
           <div className="admin-info text-center">
           <p>Admin Name: {auth?.user?.name} | Admin Email: {auth?.user?.email} | Admin Contact: {auth?.user?.phone}</p>
           </div>
